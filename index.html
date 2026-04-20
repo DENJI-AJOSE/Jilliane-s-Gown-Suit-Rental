@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jilliane's Gown & Suit Rental | Elegant Gown Shop</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav id="navbar">
+        <a href="#" class="logo">Jilliane's Gown & Suit Rental</a>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#collection">Collection</a>
+            <a href="#about">Our Story</a>
+            <a href="#store">Store</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <img src="Jilliane's Logo.png" alt="Jilliane's Gown & Suit Rental logo" class="hero-logo">
+            <h1>Elegance for Every Occasion</h1>
+            <p>Explore our curated collection of elegant gowns and stylish suits for your unforgettable moments.</p>
+            <div class="hero-btns">
+                <a href="#collection" class="btn">Shop Collection</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- COLLECTION GRID -->
+    <section id="collection" class="container categories">
+        <div class="section-title reveal">
+            <h2>Curated Collections</h2>
+            <p>Select your style</p>
+        </div>
+
+        <div id="back-button-container" style="margin-bottom: 20px; display: none;">
+            <button onclick="displayItems()" class="btn btn-back">← Back to Collections</button>
+        </div>
+
+        <div class="grid">
+            <div class="card reveal" onclick="loadCategory('ball-gown')">
+                <img src="Ball Gown/B-0003.jpg" alt="Ball Gown">
+                <div class="card-overlay">
+                    <h3>Ball Gown</h3>
+                    <p>Elegant gowns for formal events.</p>
+                </div>
+            </div>
+
+            <div class="card reveal" onclick="loadCategory('chubby')">
+                <img src="Chubby/C-0001.jpg" alt="Chubby">
+                <div class="card-overlay">
+                    <h3>Chubby</h3>
+                    <p>Flattering styles for all sizes.</p>
+                </div>
+            </div>
+
+            <div class="card reveal" onclick="loadCategory('cocktail')">
+                <img src="Cocktail/J-0001.jpg" alt="Cocktail">
+                <div class="card-overlay">
+                    <h3>Cocktail</h3>
+                    <p>Perfect for semi-formal occasions.</p>
+                </div>
+            </div>
+
+            <div class="card reveal" onclick="loadCategory('kids')">
+                <img src="Kids/K-0001.jpg" alt="Kids">
+                <div class="card-overlay">
+                    <h3>Kids</h3>
+                    <p>Adorable styles for little ones.</p>
+                </div>
+            </div>
+
+            <div class="card reveal" onclick="loadCategory('long-gown')">
+                <img src="Long Gown/20250618_160313.jpg" alt="Long Gown">
+                <div class="card-overlay">
+                    <h3>Long Gown</h3>
+                    <p>Stunning floor-length gowns.</p>
+                </div>
+            </div>
+
+            <div class="card reveal" onclick="loadCategory('suit')">
+                <img src="Suit/S-0001.jpg" alt="Suit">
+                <div class="card-overlay">
+                    <h3>Suit</h3>
+                    <p>Classic and modern suits.</p>
+                </div>
+            </div>
+
+            <div class="card reveal" onclick="loadCategory('white-gown')">
+                <img src="White Gown/W-0001.jpg" alt="White Gown">
+                <div class="card-overlay">
+                    <h3>White Gown</h3>
+                    <p>Beautiful white wedding gowns.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="pagination-container" class="pagination" style="display: none;"></div>
+       </section>
+    <!-- ABOUT SECTION -->
+    <section id="about" class="about">
+        <div class="container about-wrapper">
+            <div class="about-img reveal">
+                <img src="story photo.jpg" alt="Designer working">
+            </div>
+            <div class="about-text reveal">
+                <h2>Our Story</h2>
+                <p class="about-lead">From one prom gown idea to a growing collection of elegant rentals, Jilliane's Gown & Suit Rental was built to give every client more beautiful choices for life's special moments.</p>
+                <details class="about-details">
+                    <summary>Read Full Story</summary>
+                    <div class="about-details-content">
+                        <h3>From One Gown to Hundreds of Dreams</h3>
+                        <p>Jilliane's Gown and Suit Rental began with a simple yet meaningful experience: Jilliane's own prom. While searching for the perfect gown, she noticed that many available designs looked similar and lacked uniqueness. This sparked an idea to create a gown rental business that offers a wider variety of stylish and elegant options for others celebrating special moments.</p>
+                        <p>Starting small, the business opened with just five gowns and five suits. Despite its humble beginnings, it quickly gained attention, with customers renting within the very first week. Encouraged by this early support, the collection steadily expanded to meet growing demand.</p>
+                        <p>As the business flourished, the space was renovated and transformed into a dedicated showroom, creating a more welcoming and comfortable experience for clients. Through social media, active engagement in online communities, and positive word-of-mouth from satisfied customers, Jilliane's Gown and Suit Rental continued to grow.</p>
+                        <p>Today, what started as a simple idea has evolved into a trusted destination with over 500 gowns and counting, helping clients look and feel their best for life's most memorable occasions.</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+    <!-- OUR STORE SECTION -->
+    <section id="store" class="store">
+        <div class="container store-wrapper">
+            <div class="store-text reveal">
+                <h2>Our Store</h2>
+                <p></p>
+                <p>Visit us at Villa Castro, Pulong Gubat, Balagtas Bulacan, where our dedicated team will help you find the ideal gown or suit that makes you feel confident and beautiful.</p>
+                <a href="https://maps.app.goo.gl/UfVTVmL4YqvhcgPGA" target="_blank" class="btn btn-dark">Visit Us</a>
+            </div>
+            <div class="store-media reveal">
+                <div class="store-preview-card">
+                    <video class="store-video" controls playsinline preload="metadata">
+                        <source src="Video shop.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+        <div class="container">
+            <h3>Jilliane's Gown & Suit Rental</h3>
+            <p>Villa Castro, Pulong Gubat, Balagtas Bulacan</p>
+            <p>jillianesgownandsuitrental@gmail.com | +63 (951) 445-4032</p>
+            <div style="margin-top: 20px;">
+                <a href="https://www.facebook.com/share/19vnsFtwv2/" target="_blank" class="footer-link">Facebook</a>
+            </div>
+            <button id="admin-button" class="admin-link-btn" onclick="openAdminPanel()" title="Admin Panel">⚙️ Admin</button>
+            <p style="margin-top: 40px; font-size: 0.7rem; opacity: 0.5;">&copy; 2024 Jilliane's Gown & Suit Rental. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- IMAGE MODAL -->
+    <div id="image-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <button onclick="closeImageModal()" class="modal-back">← Back</button>
+            <img id="modal-image" src="" alt="">
+        </div>
+    </div>
+
+    <!-- ADMIN LOGIN MODAL -->
+    <div id="login-modal" class="modal" style="display: none;">
+        <div class="login-modal-content">
+            <h2>Admin Login</h2>
+            <form id="login-form" onsubmit="handleAdminLogin(event)">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="login-username" required placeholder="Enter username">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="login-password" required placeholder="Enter password">
+                </div>
+                <button type="submit" class="admin-btn">Sign In</button>
+                <button type="button" class="admin-btn-cancel" onclick="closeLoginModal()">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ADMIN PANEL MODAL -->
+    <div id="admin-modal" class="modal" style="display: none;">
+        <div class="admin-modal-content">
+            <button onclick="closeAdminPanel()" class="modal-back">× Close</button>
+            <div class="admin-panel">
+                <div class="admin-header">
+                    <h2>Admin Rental Management</h2>
+                    <button onclick="logoutAdmin()" class="logout-btn">Logout</button>
+                </div>
+                
+                <div class="admin-section">
+                    <h3>Mark as Rented</h3>
+                    <form id="rental-form" onsubmit="addRental(event)">
+                        <div class="form-group">
+                            <label>Category:</label>
+                            <select id="rental-category" required>
+                                <option value="">Select Category</option>
+                                <option value="ball-gown">Ball Gown</option>
+                                <option value="chubby">Chubby</option>
+                                <option value="cocktail">Cocktail</option>
+                                <option value="kids">Kids</option>
+                                <option value="long-gown">Long Gown</option>
+                                <option value="suit">Suit</option>
+                                <option value="white-gown">White Gown</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Gown Code:</label>
+                            <select id="rental-item" required disabled>
+                                <option value="">Select category first</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Out Date (Pickup):</label>
+                            <input type="date" id="rental-out-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Return Date:</label>
+                            <input type="date" id="rental-date" required>
+                        </div>
+                        <button type="submit" class="admin-btn">Mark as Rented</button>
+                    </form>
+                </div>
+
+                <div class="admin-section">
+                    <h3>Current Rentals</h3>
+                    <div id="rental-list" class="rental-list">
+                        <p>No active rentals</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN BUTTON (Hidden, activate with keyboard shortcut) -->
+    <button id="admin-trigger" onclick="openAdminPanel()" style="display: none;"></button>
+
+    <!-- Database configuration -->
+    <script src="db-config.js"></script>
+    <script src="catalog.js"></script>
+
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>
+
