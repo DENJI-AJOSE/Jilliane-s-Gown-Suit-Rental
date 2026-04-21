@@ -16,20 +16,33 @@ create index if not exists rentals_category_item_idx
 
 alter table public.rentals enable row level security;
 
+drop policy if exists "Public read rentals" on public.rentals;
+drop policy if exists "Public insert rentals" on public.rentals;
+drop policy if exists "Public delete rentals" on public.rentals;
+drop policy if exists "Authenticated read rentals" on public.rentals;
+drop policy if exists "Authenticated insert rentals" on public.rentals;
+drop policy if exists "Authenticated delete rentals" on public.rentals;
+
 create policy "Public read rentals"
 on public.rentals
 for select
 to anon
 using (true);
 
-create policy "Public insert rentals"
+create policy "Authenticated read rentals"
+on public.rentals
+for select
+to authenticated
+using (true);
+
+create policy "Authenticated insert rentals"
 on public.rentals
 for insert
-to anon
+to authenticated
 with check (true);
 
-create policy "Public delete rentals"
+create policy "Authenticated delete rentals"
 on public.rentals
 for delete
-to anon
+to authenticated
 using (true);

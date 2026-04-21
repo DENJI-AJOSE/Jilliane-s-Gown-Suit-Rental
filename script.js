@@ -86,12 +86,9 @@ function populateRentalItems(category, selectedFile = '') {
 // ===============================
 // ADMIN AUTHENTICATION SYSTEM
 // ===============================
-const ADMIN_CREDENTIALS = {
-    username: 'JillianesAdmin123',
-    password: 'Admin123'
-};
-
 let isAdminAuthenticated = false;
+let adminSession = null;
+const AUTH_STORAGE_KEY = 'jillianes-admin-session';
 
 function hasDatabaseConfig() {
     return Boolean(dbConfig.supabaseUrl && dbConfig.supabaseAnonKey);
@@ -114,6 +111,115 @@ function getDatabaseHeaders(prefer = '') {
     }
 
     return headers;
+}
+
+function getAuthApiBase() {
+    return dbConfig.supabaseUrl
+        ? `${dbConfig.supabaseUrl.replace(/\/$/, '')}/auth/v1`
+        : '';
+}
+
+function persistAdminSession() {
+    if (!adminSession) {
+        sessionStorage.removeItem(AUTH_STORAGE_KEY);
+        return;
+    }
+
+    sessionStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(adminSession));
+}
+
+function restoreAdminSession() {
+    const saved = sessionStorage.getItem(AUTH_STORAGE_KEY);
+    if (!saved) return;
+
+    try {
+        adminSession = JSON.parse(saved);
+        isAdminAuthenticated = Boolean(adminSession?.accessToken);
+    } catch (error) {
+        console.error('Unable to restore admin session.', error);
+        adminSession = null;
+        isAdminAuthenticated = false;
+        sessionStorage.removeItem(AUTH_STORAGE_KEY);
+    }
+}
+
+function clearAdminSession() {
+    adminSession = null;
+    isAdminAuthenticated = false;
+    persistAdminSession();
+}
+
+function setLoginMessage(message = '', isError = false) {
+    const messageEl = document.getElementById('login-message');
+    if (!messageEl) return;
+
+    messageEl.textContent = message;
+    messageEl.classList.toggle('error', isError);
+    messageEl.classList.toggle('success', Boolean(message) && !isError);
+}
+
+function requireAdminSession() {
+    if (!adminSession?.accessToken) {
+        throw new Error('Admin authentication required.');
+    }
+
+    return adminSession.accessToken;
+}
+
+function getAdminDatabaseHeaders(prefer = '') {
+    const accessToken = requireAdminSession();
+    const headers = getDatabaseHeaders(prefer);
+    headers.Authorization = `Bearer ${accessToken}`;
+    return headers;
+}
+
+async function adminAuthRequest(path, body, accessToken = '') {
+    const headers = {
+        apikey: dbConfig.supabaseAnonKey,
+        'Content-Type': 'application/json'
+    };
+
+    if (accessToken) {
+        headers.Authorization = `Bearer ${accessToken}`;
+    }
+
+    return fetch(`${getAuthApiBase()}${path}`, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify(body)
+    });
+}
+
+async function signInAdmin(email, password) {
+    const response = await adminAuthRequest('/token?grant_type=password', { email, password });
+    const payload = await response.json().catch(() => ({}));
+
+    if (!response.ok) {
+        throw new Error(payload?.msg || payload?.error_description || 'Invalid email or password.');
+    }
+
+    adminSession = {
+        accessToken: payload.access_token,
+        refreshToken: payload.refresh_token,
+        user: payload.user || null
+    };
+    isAdminAuthenticated = true;
+    persistAdminSession();
+}
+
+async function logoutAdminSession() {
+    if (!adminSession?.accessToken) {
+        clearAdminSession();
+        return;
+    }
+
+    try {
+        await adminAuthRequest('/logout', {}, adminSession.accessToken);
+    } catch (error) {
+        console.error('Unable to notify auth logout.', error);
+    } finally {
+        clearAdminSession();
+    }
 }
 
 function normalizeDatabaseRows(rows) {
@@ -162,7 +268,7 @@ async function fetchAllRentalsFromDatabase() {
 async function insertRentalIntoDatabase(reservation) {
     const response = await fetch(rentalsApiBase, {
         method: 'POST',
-        headers: getDatabaseHeaders('return=representation'),
+        headers: getAdminDatabaseHeaders('return=representation'),
         body: JSON.stringify([{
             id: reservation.id,
             category: reservation.category,
@@ -181,7 +287,7 @@ async function insertRentalIntoDatabase(reservation) {
 async function deleteRentalFromDatabase(reservationId) {
     const response = await fetch(`${rentalsApiBase}?id=eq.${encodeURIComponent(reservationId)}`, {
         method: 'DELETE',
-        headers: getDatabaseHeaders()
+        headers: getAdminDatabaseHeaders()
     });
 
     if (!response.ok) {
@@ -190,7 +296,7 @@ async function deleteRentalFromDatabase(reservationId) {
 }
 
 async function syncExpiredRentalsWithDatabase(expiredReservationIds) {
-    if (!hasDatabaseConfig() || !expiredReservationIds.length) return;
+    if (!hasDatabaseConfig() || !expiredReservationIds.length || !isAdminAuthenticated) return;
 
     await Promise.all(expiredReservationIds.map(id => deleteRentalFromDatabase(id)));
 }
@@ -246,21 +352,46 @@ async function migrateLocalStorageToDatabase() {
 
 function handleAdminLogin(event) {
     event.preventDefault();
-    const username = document.getElementById('login-username').value;
+    if (!hasDatabaseConfig()) {
+        setLoginMessage('Add your Supabase URL and anon key in db-config.js first.', true);
+        return;
+    }
+
+    const email = document.getElementById('login-email').value.trim();
     const password = document.getElementById('login-password').value;
 
-    if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
-        isAdminAuthenticated = true;
-        closeLoginModal();
-        showAdminPanel();
-        alert('Login successful!');
-    } else {
-        alert('Invalid username or password!');
-        document.getElementById('login-form').reset();
+    setLoginMessage('');
+
+    signInAdmin(email, password)
+        .then(() => {
+            closeLoginModal();
+            showAdminPanel();
+            refreshRentalViews();
+            alert('Login successful!');
+        })
+        .catch(error => {
+            console.error(error);
+            setLoginMessage(error.message || 'Unable to sign in.', true);
+            document.getElementById('login-password').value = '';
+        });
+}
+
+function ensureAdminAccess() {
+    if (isAdminAuthenticated) {
+        return true;
     }
+
+    alert('Please sign in as an admin first.');
+    openLoginModal();
+    return false;
 }
 
 function openAdminPanel() {
+    if (!hasDatabaseConfig()) {
+        alert('Add your Supabase details to db-config.js first.');
+        return;
+    }
+
     if (isAdminAuthenticated) {
         showAdminPanel();
     } else {
@@ -272,6 +403,7 @@ function openLoginModal() {
     const loginModal = document.getElementById('login-modal');
     loginModal.style.display = 'flex';
     document.getElementById('login-form').reset();
+    setLoginMessage('');
 }
 
 function closeLoginModal() {
@@ -290,8 +422,8 @@ function closeAdminPanel() {
     adminModal.style.display = 'none';
 }
 
-function logoutAdmin() {
-    isAdminAuthenticated = false;
+async function logoutAdmin() {
+    await logoutAdminSession();
     closeAdminPanel();
     alert('Logged out successfully!');
 }
@@ -404,6 +536,8 @@ async function addRental(event) {
         return;
     }
 
+    if (!ensureAdminAccess()) return;
+
     const category = document.getElementById('rental-category').value;
     const selectedFile = document.getElementById('rental-item').value;
     const itemId = getItemIdFromFileName(category, selectedFile);
@@ -454,6 +588,7 @@ async function addRental(event) {
 
 // Remove rental reservation
 async function removeRental(key, reservationId) {
+    if (!ensureAdminAccess()) return;
     if (!confirm('Remove this reservation?')) return;
 
     if (!rentals[key]) return;
@@ -725,6 +860,8 @@ function loadCategory(category) {
 
 // Wait for DOM to load
 document.addEventListener('DOMContentLoaded', async function() {
+    restoreAdminSession();
+
     try {
         await loadRentals();
     } catch (error) {

@@ -32,12 +32,18 @@ You can use [db-config.example.js](C:\Users\RCS\OneDrive\Documents\Jilliane's Go
 - Removed rentals are deleted from the database.
 - Old browser-only rental data is migrated once from `localStorage` into the database when `db-config.js` is filled in.
 
-## 4. Important security note
+## 4. Secure the admin login
 
-The current admin login in [script.js](C:\Users\RCS\OneDrive\Documents\Jilliane's Gown & Suit Rental Website\script.js) is still hardcoded in frontend JavaScript. That means it is not secure, even though the data now lives in a real database.
+The admin panel now signs in with **Supabase Auth** instead of comparing a hardcoded username/password in frontend JavaScript.
 
-For a proper production setup, the next step is:
+1. In your Supabase dashboard, open **Authentication > Users**.
+2. Create an admin user with an email address and password.
+3. Use that email and password in the website's admin login modal.
 
-- move admin authentication to a backend or Supabase Auth
-- stop exposing write access directly from the browser
-- replace the hardcoded username/password with server-side login
+The site keeps public read access for rentals, but only **authenticated** users can insert or delete rentals.
+
+## 5. Update database policies
+
+If you already created the `rentals` table using the older SQL, run the updated [supabase-schema.sql](C:\Github\jillianes-gown-suit-rental-website\Jilliane's Gown & Suit Rental\supabase-schema.sql) again or replace the old public write policies with authenticated-only policies.
+
+Without that SQL update, visitors could still write to the rentals table with the public key.

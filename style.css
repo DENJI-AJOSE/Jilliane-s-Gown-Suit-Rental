@@ -674,6 +674,21 @@ footer span:hover {
     margin-top: 10px;
 }
 
+.login-message {
+    min-height: 1.2rem;
+    margin: 10px 0 0;
+    font-size: 0.9rem;
+    color: #5c5c5c;
+}
+
+.login-message.error {
+    color: #b42318;
+}
+
+.login-message.success {
+    color: #027a48;
+}
+
 .admin-btn-cancel {
     background-color: #999;
     color: var(--white);
