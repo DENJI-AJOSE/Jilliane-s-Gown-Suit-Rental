@@ -31,7 +31,7 @@ window.GOWN_CATALOG = {
                 'B-0233.jpg', 'B-0234.jpg', 'B-0235.jpg', 'B-0236.jpg', 'B-0237.jpg', 'B-0238.jpg', 'B-0239.jpg', 'B-0240.jpg',
                 'B-0241.jpg', 'B-0242.jpg', 'B-0243.jpg', 'B-0244.jpg', 'B-0245.jpg', 'B-0246.jpg', 'B-0247.jpg', 'B-0248.jpg',
                 'B-0249.jpg', 'B-0250.jpg', 'B-0251.jpg', 'B-0252.jpg', 'B-0253.jpg', 'B-0254.jpg', 'B-0255.jpg', 'B-0256.jpg', 
-                'B-0257.jpg', 'B-0258.jpg', 'B-0260.jpg', 'B-0261.jpg', 'B-0262.jpg'
+                'B-0257.jpg', 'B-0258.jpg', 'B-0260.jpg', 'B-0261.jpg', 'B-0262.jpg', 'B-0263.jpg', 'B-0264.jpg', 'B-0265.jpg'
             ]
         },
         'chubby': {
@@ -126,11 +126,12 @@ window.GOWN_CATALOG = {
                 'W-0001.jpg', 'W-0002.jpg', 'W-0003.jpg', 'W-0004.jpg', 'W-0007.jpg', 'W-0009.jpg', 'W-0010.jpg', 'W-0011.jpg',
                 'W-0012.jpg', 'W-0014.jpg', 'W-0016.jpg', 'W-0017.jpg', 'W-0018.jpg', 'W-0020.jpg', 'W-0021.jpg', 'W-0022.jpg',
                 'W-0023.jpg', 'W-0024.jpg', 'W-0025.jpg', 'W-0026.jpg', 'W-0027.jpg', 'W-0028.jpg', 'W-0029.jpg', 'W-0030.jpg',
-                'W-0032.jpg', 'W-0034.jpg', 'W-0035.jpg', 'W-0039.jpg', 'W-0040.jpg',
-                'W-0041.jpg', 'W-0042.jpg', 'W-0043.jpg', 'W-0044.jpg', 'W-0045.jpg', 'W-0046.jpg', 'W-0047.jpg', 'W-0048.jpg',
+                'W-0032.jpg', 'W-0034.jpg', 'W-0035.jpg', 'W-0039.jpg', 'W-0040.jpg', 'W-0041.jpg', 'W-0042.jpg', 'W-0043.jpg', 
+                'W-0044.jpg', 'W-0045.jpg', 'W-0046.jpg', 'W-0047.jpg', 'W-0048.jpg',
                 'W-0049.jpg', 'W-0050.jpg', 'W-0051.jpg', 'W-0052.jpg', 'W-0053.jpg', 'W-0054.jpg', 'W-0055.jpg', 'W-0056.jpg',
                 'W-0058.jpg', 'W-0059.jpg', 'W-0060.jpg', 'W-0061.jpg', 'W-0062.jpg', 'W-0063.jpg', 'W-0064.jpg', 'W-0065.jpg',
-                'W-0066.jpg', 'W-0067.jpg', 'W-0068.jpg', 'W-0069.jpg', 'W-0070.jpg', 'W-0071.jpg'
+                'W-0066.jpg', 'W-0067.jpg', 'W-0068.jpg', 'W-0069.jpg', 'W-0070.jpg', 'W-0071.jpg', 'W-0072.jpg', 'W-0073.jpg', 
+                'W-0074.jpg'
             ]
         }
     }
