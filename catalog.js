@@ -31,7 +31,8 @@ window.GOWN_CATALOG = {
                 'B-0233.jpg', 'B-0234.jpg', 'B-0235.jpg', 'B-0236.jpg', 'B-0237.jpg', 'B-0238.jpg', 'B-0239.jpg', 'B-0240.jpg',
                 'B-0241.jpg', 'B-0242.jpg', 'B-0243.jpg', 'B-0244.jpg', 'B-0245.jpg', 'B-0246.jpg', 'B-0247.jpg', 'B-0248.jpg',
                 'B-0249.jpg', 'B-0250.jpg', 'B-0251.jpg', 'B-0252.jpg', 'B-0253.jpg', 'B-0254.jpg', 'B-0255.jpg', 'B-0256.jpg', 
-                'B-0257.jpg', 'B-0258.jpg', 'B-0260.jpg', 'B-0261.jpg', 'B-0262.jpg', 'B-0263.jpg', 'B-0264.jpg', 'B-0265.jpg'
+                'B-0257.jpg', 'B-0258.jpg', 'B-0260.jpg', 'B-0261.jpg', 'B-0262.jpg', 'B-0263.jpg', 'B-0264.jpg', 'B-0265.jpg',
+                'B-0266.jpg', 'B-0267.jpg', 'B-0268.jpg'
             ]
         },
         'chubby': {
@@ -50,7 +51,8 @@ window.GOWN_CATALOG = {
                 'C-0076.jpg', 'C-0077.jpg', 'C-0078.jpg', 'C-0079.jpg', 'C-0080.jpg', 'C-0081.jpg', 'C-0082.jpg', 'C-0083.jpg',
                 'C-0084.jpg', 'C-0085.jpg', 'C-0086.jpg', 'C-0087.jpg', 'C-0088.jpg', 'C-0089.jpg', 'C-0090.jpg', 'C-0091.jpg',
                 'C-0092.jpg', 'C-0093.jpg', 'C-0094.jpg', 'C-0095.jpg', 'C-0096.jpg', 'C-0097.jpg', 'C-0098.jpg', 'C-0099.jpg',
-                'C-0100.jpg', 'C-0102.jpg', 'C-0103.jpg', 'C-0104.jpg', 'C-0105.jpg', 'C-0106.jpg', 'C-0107.jpg', 'C-0108.jpg'
+                'C-0100.jpg', 'C-0102.jpg', 'C-0103.jpg', 'C-0104.jpg', 'C-0105.jpg', 'C-0106.jpg', 'C-0107.jpg', 'C-0108.jpg',
+                'C-0109.jpg', 'C-0110.jpg'
             ]
         },
         'cocktail': {
@@ -131,7 +133,7 @@ window.GOWN_CATALOG = {
                 'W-0049.jpg', 'W-0050.jpg', 'W-0051.jpg', 'W-0052.jpg', 'W-0053.jpg', 'W-0054.jpg', 'W-0055.jpg', 'W-0056.jpg',
                 'W-0058.jpg', 'W-0059.jpg', 'W-0060.jpg', 'W-0061.jpg', 'W-0062.jpg', 'W-0063.jpg', 'W-0064.jpg', 'W-0065.jpg',
                 'W-0066.jpg', 'W-0067.jpg', 'W-0068.jpg', 'W-0069.jpg', 'W-0070.jpg', 'W-0071.jpg', 'W-0072.jpg', 'W-0073.jpg', 
-                'W-0074.jpg'
+                'W-0074.jpg', 'W-0075.jpg', 'W-0076.jpg', 'W-0077.jpg'
             ]
         }
     }
