@@ -32,6 +32,51 @@ function getCategoryFiles(category) {
     return details ? details.files : [];
 }
 
+function isHiddenCatalogItem(category, fileName) {
+    const hiddenItems = categoryCatalog.hiddenItems?.[category] || [];
+    return hiddenItems.includes(fileName);
+}
+
+function getNewArrivalDate(category, fileName) {
+    return categoryCatalog.newArrivals?.[category]?.[fileName] || '';
+}
+
+function isNewArrival(category, fileName) {
+    const addedDate = getNewArrivalDate(category, fileName);
+    if (!addedDate) return false;
+
+    const added = new Date(`${addedDate}T00:00:00`);
+    if (Number.isNaN(added.getTime())) return false;
+
+    const today = new Date(`${getTodayLocalDate()}T00:00:00`);
+    const daysSinceAdded = Math.floor((today - added) / 86400000);
+    const activeDays = Number(categoryCatalog.newArrivalDays) || 5;
+
+    return daysSinceAdded >= 0 && daysSinceAdded < activeDays;
+}
+
+function getOrderedCategoryItems(category) {
+    return getCategoryFiles(category)
+        .map((fileName, index) => ({
+            fileName,
+            itemId: index + 1,
+            isNewArrival: isNewArrival(category, fileName),
+            addedDate: getNewArrivalDate(category, fileName)
+        }))
+        .filter(item => !isHiddenCatalogItem(category, item.fileName))
+        .sort((a, b) => {
+            if (a.isNewArrival !== b.isNewArrival) {
+                return a.isNewArrival ? -1 : 1;
+            }
+
+            if (a.isNewArrival && b.isNewArrival && a.addedDate !== b.addedDate) {
+                return b.addedDate.localeCompare(a.addedDate);
+            }
+
+            return a.itemId - b.itemId;
+        });
+}
+
 function getImageSrc(category, fileName) {
     const details = getCategoryDetails(category);
     if (!details || !fileName) return '';
@@ -44,7 +89,10 @@ function getDisplayLabel(fileName) {
 
 function getItemLabel(category, itemId) {
     const files = getCategoryFiles(category);
-    const fileName = files[Number(itemId) - 1];
+    const numericId = Number(itemId);
+    const fileName = Number.isInteger(numericId) && numericId > 0
+        ? files[numericId - 1]
+        : itemId;
     return fileName ? getDisplayLabel(fileName) : `${getCategoryDetails(category)?.name || category} #${itemId}`;
 }
 
@@ -52,6 +100,14 @@ function getItemIdFromFileName(category, fileName) {
     const files = getCategoryFiles(category);
     const index = files.indexOf(fileName);
     return index >= 0 ? index + 1 : null;
+}
+
+function getStableItemCode(category, fallbackItemId, itemCode = '') {
+    if (itemCode) return itemCode;
+
+    const files = getCategoryFiles(category);
+    const fileName = files[Number(fallbackItemId) - 1];
+    return fileName || String(fallbackItemId);
 }
 
 function populateRentalItems(category, selectedFile = '') {
@@ -74,7 +130,7 @@ function populateRentalItems(category, selectedFile = '') {
     placeholder.textContent = files.length ? 'Select gown code' : 'No items available';
     itemSelect.appendChild(placeholder);
 
-    files.forEach(fileName => {
+    files.filter(fileName => !isHiddenCatalogItem(category, fileName)).forEach(fileName => {
         const option = document.createElement('option');
         option.value = fileName;
         option.textContent = getDisplayLabel(fileName);
@@ -226,13 +282,17 @@ function normalizeDatabaseRows(rows) {
     const nextRentals = {};
 
     rows.forEach(row => {
-        const key = getRentalKey(row.category, row.item_id);
+        const itemCode = getStableItemCode(row.category, row.item_id, row.item_code);
+        const key = getRentalKey(row.category, itemCode);
         if (!nextRentals[key]) {
             nextRentals[key] = [];
         }
 
         nextRentals[key].push({
             id: row.id,
+            itemCode,
+            itemId: row.item_id,
+            needsItemCodeBackfill: !row.item_code,
             outDate: row.out_date,
             returnDate: row.return_date,
             rentedOn: row.rented_on
@@ -273,6 +333,7 @@ async function insertRentalIntoDatabase(reservation) {
             id: reservation.id,
             category: reservation.category,
             item_id: reservation.itemId,
+            item_code: reservation.itemCode,
             out_date: reservation.outDate,
             return_date: reservation.returnDate,
             rented_on: reservation.rentedOn
@@ -293,6 +354,37 @@ async function deleteRentalFromDatabase(reservationId) {
     if (!response.ok) {
         throw new Error(`Failed to delete rental (${response.status})`);
     }
+}
+
+async function updateRentalCodeInDatabase(reservationId, itemCode) {
+    const response = await fetch(`${rentalsApiBase}?id=eq.${encodeURIComponent(reservationId)}`, {
+        method: 'PATCH',
+        headers: getAdminDatabaseHeaders(),
+        body: JSON.stringify({ item_code: itemCode })
+    });
+
+    if (!response.ok) {
+        throw new Error(`Failed to update rental code (${response.status})`);
+    }
+}
+
+async function backfillMissingRentalCodes() {
+    if (!hasDatabaseConfig() || !isAdminAuthenticated) return;
+
+    const updates = [];
+    Object.values(rentals).forEach(entries => {
+        entries.forEach(entry => {
+            if (entry.needsItemCodeBackfill && entry.id && entry.itemCode) {
+                updates.push(updateRentalCodeInDatabase(entry.id, entry.itemCode).then(() => {
+                    entry.needsItemCodeBackfill = false;
+                }));
+            }
+        });
+    });
+
+    if (!updates.length) return;
+
+    await Promise.all(updates);
 }
 
 async function syncExpiredRentalsWithDatabase(expiredReservationIds) {
@@ -317,14 +409,17 @@ async function migrateLocalStorageToDatabase() {
 
     const rows = [];
     Object.entries(parsed).forEach(([key, value]) => {
-        const { category, itemId } = parseRentalKey(key);
+        const { category, itemCode, itemId } = parseRentalKey(key);
         const entries = Array.isArray(value) ? value : [value];
+        const resolvedItemCode = getStableItemCode(category, itemId, itemCode);
+        const resolvedItemId = getItemIdFromFileName(category, resolvedItemCode) || Number(itemId);
 
         entries.forEach(entry => {
             rows.push({
                 id: isUuid(entry.id) ? entry.id : crypto.randomUUID(),
                 category,
-                item_id: Number(itemId),
+                item_id: resolvedItemId,
+                item_code: resolvedItemCode,
                 out_date: entry.outDate,
                 return_date: entry.returnDate,
                 rented_on: entry.rentedOn || getTodayLocalDate()
@@ -363,7 +458,8 @@ function handleAdminLogin(event) {
     setLoginMessage('');
 
     signInAdmin(email, password)
-        .then(() => {
+        .then(async () => {
+            await backfillMissingRentalCodes();
             closeLoginModal();
             showAdminPanel();
             refreshRentalViews();
@@ -438,7 +534,7 @@ document.addEventListener('keydown', function(e) {
 // ===============================
 // RENTAL MANAGEMENT SYSTEM
 // ===============================
-let rentals = {}; // Format: { "category-itemId": [ { id, outDate, returnDate, rentedOn } ] }
+let rentals = {}; // Format: { "category::itemCode": [ { id, itemCode, itemId, outDate, returnDate, rentedOn } ] }
 
 async function loadRentals() {
     if (!hasDatabaseConfig()) {
@@ -484,16 +580,28 @@ function checkRentalExpiry(shouldSync = true) {
 }
 
 // Get rental key for an item
-function getRentalKey(category, itemId) {
-    return `${category}-${itemId}`;
+function getRentalKey(category, itemCode) {
+    return `${category}::${itemCode}`;
 }
 
-// Parse rental key into category and itemId safely
+// Parse rental key into category and stable item code safely.
 function parseRentalKey(key) {
+    if (key.includes('::')) {
+        const [category, itemCode] = key.split('::');
+        return {
+            category,
+            itemCode,
+            itemId: getItemIdFromFileName(category, itemCode)
+        };
+    }
+
     const lastDash = key.lastIndexOf('-');
+    const category = key.slice(0, lastDash);
+    const itemId = key.slice(lastDash + 1);
     return {
-        category: key.slice(0, lastDash),
-        itemId: key.slice(lastDash + 1)
+        category,
+        itemCode: getStableItemCode(category, itemId),
+        itemId
     };
 }
 
@@ -503,8 +611,8 @@ function rangesOverlap(startA, endA, startB, endB) {
 }
 
 // Get rental status for item based on current date
-function getRentalStatus(category, itemId) {
-    const key = getRentalKey(category, itemId);
+function getRentalStatus(category, itemCode) {
+    const key = getRentalKey(category, itemCode);
     const entries = rentals[key] || [];
     if (!entries.length) return null;
 
@@ -540,11 +648,12 @@ async function addRental(event) {
 
     const category = document.getElementById('rental-category').value;
     const selectedFile = document.getElementById('rental-item').value;
+    const itemCode = selectedFile;
     const itemId = getItemIdFromFileName(category, selectedFile);
     const outDate = document.getElementById('rental-out-date').value;
     const returnDate = document.getElementById('rental-date').value;
 
-    if (!category || !itemId || !outDate || !returnDate) {
+    if (!category || !itemCode || !itemId || !outDate || !returnDate) {
         alert('Please fill all fields');
         return;
     }
@@ -554,7 +663,7 @@ async function addRental(event) {
         return;
     }
 
-    const key = getRentalKey(category, itemId);
+    const key = getRentalKey(category, itemCode);
     const entries = rentals[key] || [];
 
     for (const entry of entries) {
@@ -567,6 +676,7 @@ async function addRental(event) {
     const reservation = {
         id: crypto.randomUUID(),
         category,
+        itemCode,
         itemId,
         outDate: outDate,
         returnDate: returnDate,
@@ -579,7 +689,7 @@ async function addRental(event) {
         document.getElementById('rental-form').reset();
         populateRentalItems('');
         updateRentalList();
-        alert(`Item marked as rented: ${getItemLabel(category, itemId)}`);
+        alert(`Item marked as rented: ${getItemLabel(category, itemCode)}`);
     } catch (error) {
         console.error(error);
         alert('Unable to save rental to the database.');
@@ -620,8 +730,9 @@ function updateRentalList() {
 
     let html = '';
     for (const key in rentals) {
-        const { category, itemId } = parseRentalKey(key);
+        const { category, itemCode, itemId } = parseRentalKey(key);
         const entries = rentals[key];
+        const labelKey = itemCode || itemId;
 
         entries.sort((a, b) => a.outDate.localeCompare(b.outDate));
 
@@ -637,7 +748,7 @@ function updateRentalList() {
             html += `
                 <div class="rental-item">
                     <div class="rental-item-info">
-                        <strong>${getCategoryDetails(category)?.name || category} - ${getItemLabel(category, itemId)}</strong>
+                        <strong>${getCategoryDetails(category)?.name || category} - ${getItemLabel(category, labelKey)}</strong>
                         <small>Out: ${outDate} • Return: ${returnDate}</small>
                     </div>
                     <button class="rental-item-delete" type="button" data-rental-key="${key}" data-rental-id="${entry.id}">Remove</button>
@@ -706,7 +817,7 @@ function displayItems(category = null) {
         
         categoryCatalog.order.forEach(cat => {
             const details = getCategoryDetails(cat);
-            const coverFile = details?.files?.[0];
+            const coverFile = details?.files?.find(fileName => !isHiddenCatalogItem(cat, fileName));
             if (!details || !coverFile) return;
 
             const card = document.createElement('div');
@@ -732,23 +843,24 @@ function displayItems(category = null) {
         currentCategory = category;
         backButtonContainer.style.display = 'block';
 
-        const files = getCategoryFiles(category);
-        const max = files.length;
+        const items = getOrderedCategoryItems(category);
+        const max = items.length;
         const totalPages = Math.max(1, Math.ceil(max / itemsPerPage));
         currentPage = Math.min(Math.max(currentPage, 1), totalPages);
         paginationContainer.style.display = totalPages > 1 ? 'flex' : 'none';
         const startIndex = (currentPage - 1) * itemsPerPage;
-        const visibleFiles = files.slice(startIndex, startIndex + itemsPerPage);
+        const visibleItems = items.slice(startIndex, startIndex + itemsPerPage);
 
-        visibleFiles.forEach((fileName, index) => {
+        visibleItems.forEach(item => {
+            const { fileName, isNewArrival: showNewArrival } = item;
             const card = document.createElement('div');
-            const itemNumber = startIndex + index + 1;
-            const rentalData = getRentalStatus(category, itemNumber);
+            const rentalData = getRentalStatus(category, fileName);
             const isRented = rentalData && rentalData.status === 'rented';
             card.className = isRented ? 'card rented' : 'card';
 
             const imageSrc = getImageSrc(category, fileName);
             const label = getDisplayLabel(fileName);
+            const newArrivalBadge = showNewArrival ? '<span class="new-arrival-badge">New Arrival</span>' : '';
             let rentalBadge = '';
             let statusText = 'Click to view';
 
@@ -786,6 +898,7 @@ function displayItems(category = null) {
             }
 
             card.innerHTML = `
+                ${newArrivalBadge}
                 ${rentalBadge}
                 <img src="${imageSrc}" alt="${label}" style="cursor: pointer;">
                 <div class="card-overlay">

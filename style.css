@@ -392,6 +392,22 @@ nav.scrolled .nav-links a {
     font-size: 1.5rem;
 }
 
+.new-arrival-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 3;
+    padding: 7px 14px;
+    border-radius: 20px;
+    background: var(--accent-color);
+    color: var(--primary-color);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+}
+
 /* STATUS BADGE */
 .status-stack {
     position: absolute;
