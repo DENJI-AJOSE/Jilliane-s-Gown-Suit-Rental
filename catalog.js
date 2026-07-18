@@ -3,98 +3,62 @@ window.GOWN_CATALOG = {
     newArrivalDays: 5,
     newArrivals: {
         'ball-gown': {
-            'B-0273.jpg': '2026-06-23',
-            'B-0274.jpg': '2026-06-23',
-            'B-0275.jpg': '2026-06-23',
-            'B-0276.jpg': '2026-06-23',
-            'B-0277.jpg': '2026-06-23',
-            'B-0278.jpg': '2026-06-23',
-            'B-0279.jpg': '2026-06-23',
-            'B-0280.jpg': '2026-06-23',
-            'B-0281.jpg': '2026-06-23',
-            'B-0282.jpg': '2026-06-23',
-            'B-0283.jpg': '2026-06-23',
-            'B-0284.jpg': '2026-06-23',
-            'B-0285.jpg': '2026-06-23',
-            'B-0286.jpg': '2026-06-23',
-            'B-0287.jpg': '2026-06-23',
-            'B-0288.jpg': '2026-06-23'
+            'B-0294.jpg': '2026-07-18',
+            'B-0295.jpg': '2026-07-18',
+            'B-0296.jpg': '2026-07-18',
+            'B-0297.jpg': '2026-07-18'
         },
         'chubby': {
-           'C-0118.jpg': '2026-06-23',
-           'C-0119.jpg': '2026-06-23',
-           'C-0120.jpg': '2026-06-23'
+            'C-0121.jpg': '2026-07-18',
+            'C-0122.jpg': '2026-07-18',
+            'C-0123.jpg': '2026-07-18',
+            'C-0124.jpg': '2026-07-18'
         },
         'cocktail': {
 
         },
         'kids': {
-           'K-0060.jpg': '2026-06-23',
-           'K-0061.jpg': '2026-06-23',
-           'K-0062.jpg': '2026-06-23',
-           'K-0063.jpg': '2026-06-23',
-           'K-0064.jpg': '2026-06-23',
-           'K-0065.jpg': '2026-06-23',
-           'K-0066.jpg': '2026-06-23',
-           'K-0067.jpg': '2026-06-23'
+           
         },
         'long-gown': {
-            'L-0116.jpg': '2026-06-23',
-            'L-0117.jpg': '2026-06-23',
-            'L-0118.jpg': '2026-06-23',
-            'L-0119.jpg': '2026-06-23'
+            'L-0120.jpg': '2026-07-18'
         },
         'suit': {
-            'S-0084.jpg': '2026-06-23',
-            'S-0085.jpg': '2026-06-23',
-            'S-0086.jpg': '2026-06-23',
-            'S-0087.jpg': '2026-06-23',
-            'S-0088.jpg': '2026-06-23',
-            'S-0089.jpg': '2026-06-23',
-            'S-0090.jpg': '2026-06-23',
-            'S-0091.jpg': '2026-06-23',
-            'S-0092.jpg': '2026-06-23',
-            'S-0093.jpg': '2026-06-23',
-            'S-0094.jpg': '2026-06-23',
-            'S-0095.jpg': '2026-06-23'
+           
         },
         'white-gown': {
-            'W-0080.jpg': '2026-06-23',
-            'W-0081.jpg': '2026-06-23'
+            'W-0082.jpg': '2026-07-18',
+            'W-0084.jpg': '2026-07-18',
+            'W-0085.jpg': '2026-07-18'
         }
     },
-    hiddenItems: {
-        // Sold or unavailable items should go here instead of being removed from files.
-        // Example:
-        // 'ball-gown': ['B-0008.jpg']
-        'ball-gown': ['B-0108.jpg']
-    },
+    hiddenItems: {},
     categories: {
         'ball-gown': {
             name: 'Ball Gown',
             folder: 'Ball Gown',
             description: 'Elegant gowns for formal events.',
             files: [
-                'B-0003.jpg', 'B-0007.jpg', 'B-0008.jpg', 'B-0011.jpg', 'B-0013.jpg', 'B-0014.jpg', 'B-0015.jpg', 'B-0017.jpg',
-                'B-0018.jpg', 'B-0019.jpg', 'B-0020.jpg', 'B-0021.jpg', 'B-0022.jpg', 'B-0023.jpg', 'B-0028.jpg', 'B-0029.jpg', 'B-0030.jpg', 'B-0031.jpg',
+                'B-0007.jpg', 'B-0008.jpg', 'B-0011.jpg', 'B-0013.jpg', 'B-0014.jpg', 'B-0015.jpg', 'B-0017.jpg',
+                'B-0018.jpg', 'B-0019.jpg', 'B-0020.jpg', 'B-0021.jpg', 'B-0022.jpg', 'B-0028.jpg', 'B-0029.jpg', 'B-0030.jpg', 'B-0031.jpg',
                 'B-0032.jpg', 'B-0034.jpg', 'B-0036.jpg', 'B-0037.jpg', 'B-0040.jpg', 'B-0041.jpg', 'B-0042.jpg', 'B-0043.jpg',
                 'B-0045.jpg', 'B-0045a.jpg','B-0046.jpg', 'B-0047.jpg', 'B-0050.jpg', 'B-0052.jpg', 'B-0053.jpg', 'B-0054.jpg',
                 'B-0055.jpg', 'B-0056.jpg', 'B-0059.jpg', 'B-0060.jpg', 'B-0061.jpg', 'B-0062.jpg', 'B-0063.jpg', 'B-0064.jpg',
-                'B-0065.jpg', 'B-0066.jpg', 'B-0067.jpg', 'B-0068.jpg', 'B-0070.jpg', 'B-0071.jpg', 'B-0072.jpg', 'B-0073.jpg',
+                'B-0065.jpg', 'B-0066.jpg', 'B-0068.jpg', 'B-0070.jpg', 'B-0071.jpg', 'B-0072.jpg', 'B-0073.jpg',
                 'B-0074.jpg', 'B-0076.jpg', 'B-0078.jpg', 'B-0079.jpg', 'B-0081.jpg', 'B-0082.jpg', 'B-0083.jpg', 'B-0084.jpg',
                 'B-0085.jpg', 'B-0086.jpg', 'B-0087.jpg', 'B-0090.jpg', 'B-0091.jpg', 'B-0092.jpg', 'B-0094.jpg', 'B-0095.jpg',
                 'B-0096.jpg', 'B-0098.jpg', 'B-0099.jpg', 'B-0100.jpg', 'B-0101.jpg', 'B-0102.jpg', 'B-0104.jpg', 'B-0106.jpg',
-                'B-0107.jpg', 'B-0108.jpg', 'B-0109.jpg', 'B-0110.jpg', 'B-0111.jpg', 'B-0112.jpg', 'B-0113.jpg', 'B-0116.jpg',
-                'B-0117.jpg', 'B-0118.jpg', 'B-0119.jpg', 'B-0121.jpg', 'B-0122.jpg', 'B-0123.jpg', 'B-0124.jpg', 'B-0125.jpg', 'B-0126.jpg',
+                'B-0107.jpg', 'B-0109.jpg', 'B-0110.jpg', 'B-0111.jpg', 'B-0112.jpg', 'B-0116.jpg',
+                'B-0117.jpg', 'B-0118.jpg', 'B-0119.jpg', 'B-0121.jpg', 'B-0123.jpg', 'B-0124.jpg', 'B-0125.jpg', 'B-0126.jpg',
                 'B-0128.jpg', 'B-0129.jpg', 'B-0130.jpg', 'B-0131.jpg', 'B-0133.jpg', 'B-0134.jpg', 'B-0135.jpg', 'B-0136.jpg',
                 'B-0137.jpg', 'B-0138.jpg', 'B-0139.jpg', 'B-0140.jpg', 'B-0141.jpg', 'B-0142.jpg', 'B-0144.jpg', 'B-0145.jpg',
                 'B-0146.jpg', 'B-0147.jpg', 'B-0148.jpg', 'B-0150.jpg', 'B-0151.jpg', 'B-0152.jpg', 'B-0153.jpg', 'B-0154.jpg',
                 'B-0155.jpg', 'B-0156.jpg', 'B-0157.jpg', 'B-0158.jpg', 'B-0160.jpg', 'B-0161.jpg', 'B-0162.jpg', 'B-0164.jpg',
                 'B-0165.jpg', 'B-0166.jpg', 'B-0167.jpg', 'B-0169.jpg', 'B-0170.jpg', 'B-0171.jpg', 'B-0173.jpg', 'B-0175.jpg',
                 'B-0176.jpg', 'B-0177.jpg', 'B-0178.jpg', 'B-0179.jpg', 'B-0183.jpg', 'B-0185.jpg', 'B-0186.jpg', 'B-0187.jpg',
-                'B-0188.jpg', 'B-0189.jpg', 'B-0190.jpg', 'B-0191.jpg', 'B-0192.jpg', 'B-0193.jpg', 'B-0194.jpg', 'B-0195.jpg',
-                'B-0197.jpg', 'B-0199.jpg', 'B-0200.jpg', 'B-0201.jpg', 'B-0203.jpg', 'B-0204.jpg', 'B-0205.jpg', 'B-0206.jpg',
-                'B-0208.jpg', 'B-0209.jpg', 'B-0210.jpg', 'B-0211.jpg', 'B-0212.jpg', 'B-0213.jpg', 'B-0214.jpg', 'B-0215.jpg',
+                'B-0188.jpg', 'B-0189.jpg', 'B-0190.jpg', 'B-0191.jpg', 'B-0192.jpg', 'B-0193.jpg', 'B-0194.jpg',
+                'B-0199.jpg', 'B-0201.jpg', 'B-0203.jpg', 'B-0204.jpg', 'B-0205.jpg', 'B-0206.jpg',
+                'B-0208.jpg', 'B-0209.jpg', 'B-0211.jpg', 'B-0212.jpg', 'B-0213.jpg', 'B-0214.jpg', 'B-0215.jpg',
                 'B-0216.jpg', 'B-0217.jpg', 'B-0218.jpg', 'B-0220.jpg', 'B-0221.jpg', 'B-0222.jpg', 'B-0223.jpg', 'B-0224.jpg',
                 'B-0225.jpg', 'B-0226.jpg', 'B-0227.jpg', 'B-0228.jpg', 'B-0229.jpg', 'B-0230.jpg', 'B-0231.jpg', 'B-0232.jpg',
                 'B-0233.jpg', 'B-0234.jpg', 'B-0235.jpg', 'B-0236.jpg', 'B-0237.jpg', 'B-0238.jpg', 'B-0239.jpg', 'B-0240.jpg',
@@ -103,7 +67,8 @@ window.GOWN_CATALOG = {
                 'B-0257.jpg', 'B-0258.jpg', 'B-0260.jpg', 'B-0261.jpg', 'B-0262.jpg', 'B-0263.jpg', 'B-0264.jpg', 'B-0265.jpg',
                 'B-0266.jpg', 'B-0267.jpg', 'B-0268.jpg', 'B-0269.jpg', 'B-0270.jpg', 'B-0271.jpg', 'B-0272.jpg', 'B-0273.jpg',
                 'B-0274.jpg', 'B-0275.jpg', 'B-0276.jpg', 'B-0277.jpg', 'B-0278.jpg', 'B-0279.jpg', 'B-0280.jpg', 'B-0281.jpg',
-                'B-0282.jpg', 'B-0283.jpg', 'B-0284.jpg', 'B-0285.jpg', 'B-0286.jpg', 'B-0287.jpg', 'B-0288.jpg'
+                'B-0282.jpg', 'B-0283.jpg', 'B-0284.jpg', 'B-0285.jpg', 'B-0286.jpg', 'B-0287.jpg', 'B-0288.jpg', 'B-0294.jpg',
+                'B-0295.jpg', 'B-0296.jpg', 'B-0297.jpg', 'B-0298.jpg'
             ]
         },
         'chubby': {
@@ -111,20 +76,20 @@ window.GOWN_CATALOG = {
             folder: 'Chubby',
             description: 'Flattering styles for all sizes.',
             files: [
-                'C-0001.jpg', 'C-0002.jpg', 'C-0003.jpg', 'C-0004.jpg', 'C-0005.jpg', 'C-0006.jpg', 'C-0007.jpg', 'C-0008.jpg',
+                'C-0002.jpg', 'C-0003.jpg', 'C-0004.jpg', 'C-0005.jpg', 'C-0006.jpg', 'C-0007.jpg', 'C-0008.jpg',
                 'C-0010.jpg', 'C-0011.jpg', 'C-0012.jpg', 'C-0013.jpg', 'C-0015.jpg', 'C-0016.jpg', 'C-0017.jpg', 'C-0018.jpg',
-                'C-0019.jpg', 'C-0020.jpg', 'C-0021.jpg', 'C-0022.jpg', 'C-0025.jpg', 'C-0027.jpg', 'C-0028.jpg', 'C-0029.jpg',
+                'C-0019.jpg', 'C-0020.jpg', 'C-0021.jpg', 'C-0022.jpg', 'C-0025.jpg', 'C-0028.jpg', 'C-0029.jpg',
                 'C-0031.jpg', 'C-0032.jpg', 'C-0033.jpg', 'C-0034.jpg', 'C-0035.jpg', 'C-0036.jpg', 'C-0037.jpg', 'C-0039.jpg',
                 'C-0040.jpg', 'C-0041.jpg', 'C-0044.jpg', 'C-0045.jpg', 'C-0046.jpg', 'C-0047.jpg', 'C-0048.jpg', 'C-0049.jpg',
                 'C-0051.jpg', 'C-0052.jpg', 'C-0053.jpg', 'C-0055.jpg', 'C-0056.jpg', 'C-0057.jpg', 'C-0058.jpg', 'C-0059.jpg',
                 'C-0060.jpg', 'C-0061.jpg', 'C-0062.jpg', 'C-0063.jpg', 'C-0064.jpg', 'C-0065.jpg', 'C-0066.jpg', 'C-0067.jpg',
                 'C-0068.jpg', 'C-0069.jpg', 'C-0070.jpg', 'C-0071.jpg', 'C-0072.jpg', 'C-0073.jpg', 'C-0074.jpg', 'C-0075.jpg',
-                'C-0076.jpg', 'C-0077.jpg', 'C-0078.jpg', 'C-0079.jpg', 'C-0080.jpg', 'C-0081.jpg', 'C-0082.jpg', 'C-0083.jpg',
-                'C-0084.jpg', 'C-0085.jpg', 'C-0086.jpg', 'C-0087.jpg', 'C-0088.jpg', 'C-0089.jpg', 'C-0090.jpg', 'C-0091.jpg',
+                'C-0076.jpg', 'C-0077.jpg', 'C-0078.jpg', 'C-0079.jpg', 'C-0080.jpg', 'C-0081.jpg', 'C-0082.jpg',
+                'C-0084.jpg', 'C-0085.jpg', 'C-0086.jpg', 'C-0087.jpg', 'C-0088.jpg', 'C-0089.jpg', 'C-0090.jpg',
                 'C-0092.jpg', 'C-0093.jpg', 'C-0094.jpg', 'C-0095.jpg', 'C-0096.jpg', 'C-0097.jpg', 'C-0098.jpg', 'C-0099.jpg',
                 'C-0100.jpg', 'C-0102.jpg', 'C-0103.jpg', 'C-0104.jpg', 'C-0105.jpg', 'C-0106.jpg', 'C-0107.jpg', 'C-0108.jpg',
                 'C-0109.jpg', 'C-0110.jpg', 'C-0111.jpg', 'C-0112.jpg', 'C-0113.jpg', 'C-0114.jpg', 'C-0115.jpg', 'C-0116.jpg',
-                'C-0117.jpg', 'C-0118.jpg', 'C-0119.jpg', 'C-0120.jpg'
+                'C-0117.jpg', 'C-0118.jpg', 'C-0119.jpg', 'C-0120.jpg', 'C-0121.jpg', 'C-0122.jpg', 'C-0123.jpg', 'C-0124.jpg'
             ]
         },
         'cocktail': {
@@ -164,17 +129,17 @@ window.GOWN_CATALOG = {
                 'L-0001.jpg', 'L-0002.jpg', 'L-0003.jpg', 'L-0005.jpg', 'L-0006.jpg', 'L-0007.jpg', 'L-0008.jpg',
                 'L-0009.jpg', 'L-0010.jpg', 'L-0011.jpg', 'L-0012.jpg', 'L-0014.jpg', 'L-0015.jpg', 'L-0016.jpg', 'L-0018.jpg',
                 'L-0019.jpg', 'L-0020.jpg', 'L-0021.jpg', 'L-0022.jpg', 'L-0023.jpg', 'L-0024.jpg', 'L-0025.jpg', 'L-0026.jpg',
-                'L-0027.jpg', 'L-0028.jpg', 'L-0029.jpg', 'L-0030.jpg', 'L-0031.jpg', 'L-0033.jpg', 'L-0034.jpg', 'L-0036.jpg',
-                'L-0037.jpg', 'L-0038.jpg', 'L-0039.jpg', 'L-0040.jpg', 'L-0041.jpg', 'L-0043.jpg', 'L-0044.jpg', 'L-0045.jpg',
+                'L-0027.jpg', 'L-0028.jpg', 'L-0030.jpg', 'L-0031.jpg', 'L-0033.jpg', 'L-0036.jpg',
+                'L-0037.jpg', 'L-0038.jpg', 'L-0039.jpg', 'L-0040.jpg', 'L-0043.jpg', 'L-0044.jpg', 'L-0045.jpg',
                 'L-0046.jpg', 'L-0047.jpg', 'L-0048.jpg', 'L-0050.jpg', 'L-0051.jpg', 'L-0052.jpg', 'L-0053.jpg',
-                'L-0054.jpg', 'L-0055.jpg', 'L-0056.jpg', 'L-0057.jpg', 'L-0058.jpg', 'L-0059.jpg', 'L-0060.jpg', 'L-0061.jpg', 'L-0062.jpg',
-                'L-0063.jpg', 'L-0064.jpg', 'L-0065.jpg', 'L-0066.jpg', 'L-0067.jpg', 'L-0069.jpg', 'L-0070.jpg', 'L-0071.jpg',
+                'L-0054.jpg', 'L-0055.jpg', 'L-0056.jpg', 'L-0058.jpg', 'L-0059.jpg', 'L-0060.jpg', 'L-0061.jpg', 'L-0062.jpg',
+                'L-0063.jpg', 'L-0065.jpg', 'L-0067.jpg', 'L-0069.jpg', 'L-0070.jpg', 'L-0071.jpg',
                 'L-0072.jpg', 'L-0073.jpg', 'L-0074.jpg', 'L-0075.jpg', 'L-0076.jpg', 'L-0077.jpg', 'L-0078.jpg', 'L-0079.jpg',
                 'L-0080.jpg', 'L-0081.jpg', 'L-0082.jpg', 'L-0083.jpg', 'L-0085.jpg', 'L-0086.jpg', 'L-0087.jpg', 'L-0088.jpg',
                 'L-0089.jpg', 'L-0090.jpg', 'L-0091.jpg', 'L-0092.jpg', 'L-0093.jpg', 'L-0094.jpg', 'L-0095.jpg', 'L-0096.jpg',
                 'L-0097.jpg', 'L-0098.jpg', 'L-0099.jpg', 'L-0100.jpg', 'L-0101.jpg', 'L-0102.jpg', 'L-0103.jpg', 'L-0104.jpg',
                 'L-0105.jpg', 'L-0106.jpg', 'L-0107.jpg', 'L-0108.jpg', 'L-0109.jpg', 'L-0110.jpg', 'L-0111.jpg', 'L-0112.jpg',
-                'L-0113.jpg', 'L-0114.jpg', 'L-0115.jpg', 'L-0116.jpg', 'L-0117.jpg', 'L-0118.jpg', 'L-0119.jpg'
+                'L-0113.jpg', 'L-0114.jpg', 'L-0115.jpg', 'L-0116.jpg', 'L-0117.jpg', 'L-0118.jpg', 'L-0119.jpg', 'L-0120.jpg'
             ]
         },
         'suit': {
@@ -209,7 +174,8 @@ window.GOWN_CATALOG = {
                 'W-0049.jpg', 'W-0050.jpg', 'W-0051.jpg', 'W-0052.jpg', 'W-0053.jpg', 'W-0054.jpg', 'W-0055.jpg', 'W-0056.jpg',
                 'W-0058.jpg', 'W-0059.jpg', 'W-0060.jpg', 'W-0061.jpg', 'W-0062.jpg', 'W-0063.jpg', 'W-0064.jpg', 'W-0065.jpg',
                 'W-0066.jpg', 'W-0067.jpg', 'W-0068.jpg', 'W-0069.jpg', 'W-0070.jpg', 'W-0071.jpg', 'W-0072.jpg', 'W-0073.jpg', 
-                'W-0074.jpg', 'W-0075.jpg', 'W-0076.jpg', 'W-0077.jpg', 'W-0078.jpg', 'W-0079.jpg', 'W-0080.jpg', 'W-0081.jpg'
+                'W-0074.jpg', 'W-0075.jpg', 'W-0076.jpg', 'W-0077.jpg', 'W-0078.jpg', 'W-0079.jpg', 'W-0080.jpg', 'W-0081.jpg',
+                'W-0082.jpg', 'W-0084.jpg', 'W-0085.jpg'
             ]
         }
     }
