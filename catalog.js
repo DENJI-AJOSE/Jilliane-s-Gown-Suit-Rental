@@ -1,5 +1,5 @@
 window.GOWN_CATALOG = {
-    order: ['ball-gown', 'chubby', 'cocktail', 'kids', 'long-gown', 'suit', 'white-gown'],
+    order: ['ball-gown', 'chubby', 'cocktail', 'filipiniana', 'kids', 'long-gown', 'suit', 'white-gown'],
     newArrivalDays: 5,
     newArrivals: {
         'ball-gown': {
@@ -21,6 +21,45 @@ window.GOWN_CATALOG = {
         'chubby': {
         },
         'cocktail': {
+        },
+        'filipiniana': {
+            'F-0001.jpg' : '2026-08-12',
+            'F-0002.jpg' : '2026-08-12',
+            'F-0003.jpg' : '2026-08-12',
+            'F-0004.jpg' : '2026-08-12',
+            'F-0005.jpg' : '2026-08-12',
+            'F-0006.jpg' : '2026-08-12',
+            'F-0007.jpg' : '2026-08-12',
+            'F-0008.jpg' : '2026-08-12',
+            'F-0009.jpg' : '2026-08-12',
+            'F-0010.jpg' : '2026-08-12',
+            'F-0011.jpg' : '2026-08-12',
+            'F-0012.jpg' : '2026-08-12',
+            'F-0013.jpg' : '2026-08-12',
+            'F-0014.jpg' : '2026-08-12',
+            'F-0015.jpg' : '2026-08-12',
+            'F-0016.jpg' : '2026-08-12',
+            'F-0017.jpg' : '2026-08-12',
+            'F-0018.jpg' : '2026-08-12',
+            'F-0019.jpg' : '2026-08-12',
+            'F-0020.jpg' : '2026-08-12',
+            'F-0021.jpg' : '2026-08-12',
+            'F-0022.jpg' : '2026-08-12',
+            'F-0023.jpg' : '2026-08-12',
+            'F-0024.jpg' : '2026-08-12',
+            'F-0025.jpg' : '2026-08-12',
+            'F-0026.jpg' : '2026-08-12',
+            'F-0027.jpg' : '2026-08-12',
+            'F-0028.jpg' : '2026-08-12',
+            'F-0029.jpg' : '2026-08-12',
+            'F-0030.jpg' : '2026-08-12',
+            'F-0031.jpg' : '2026-08-12',
+            'F-0032.jpg' : '2026-08-12',
+            'F-0033.jpg' : '2026-08-12',
+            'F-0034.jpg' : '2026-08-12',
+            'F-0035.jpg' : '2026-08-12',
+            'F-0036.jpg' : '2026-08-12',
+            'F-0037.jpg' : '2026-08-12'
         },
         'kids': {           
         },
@@ -108,6 +147,18 @@ window.GOWN_CATALOG = {
                 'J-0050.jpg', 'J-0051.jpg', 'J-0052.jpg', 'J-0053.jpg', 'J-0054.jpg', 'J-0055.jpg', 'J-0056.jpg', 'J-0057.jpg',
                 'J-0058.jpg', 'J-0060.jpg', 'J-0061.jpg', 'J-0062.jpg', 'J-0063.jpg', 'J-0064.jpg', 'J-0065.jpg', 'J-0066.jpg',
                 'J-0067.jpg', 'J-0068.jpg', 'J-0069.jpg', 'J-0070.jpg'
+            ]
+        },
+        'filipiniana': {
+            name: 'Filipiniana',
+            folder: 'Filipiniana',
+            description: 'Timeless Filipiniana styles for special occasions.',
+            files: [
+                'F-0001.jpg', 'F-0002.jpg', 'F-0003.jpg', 'F-0004.jpg', 'F-0005.jpg', 'F-0006.jpg', 'F-0007.jpg', 'F-0008.jpg',
+                'F-0009.jpg', 'F-0010.jpg', 'F-0011.jpg', 'F-0012.jpg', 'F-0013.jpg', 'F-0014.jpg', 'F-0015.jpg', 'F-0016.jpg',
+                'F-0017.jpg', 'F-0018.jpg', 'F-0019.jpg', 'F-0020.jpg', 'F-0021.jpg', 'F-0022.jpg', 'F-0023.jpg', 'F-0024.jpg',
+                'F-0025.jpg', 'F-0026.jpg', 'F-0027.jpg', 'F-0028.jpg', 'F-0029.jpg', 'F-0030.jpg', 'F-0031.jpg', 'F-0032.jpg',
+                'F-0033.jpg', 'F-0034.jpg', 'F-0035.jpg', 'F-0036.jpg', 'F-0037.jpg'
             ]
         },
         'kids': {
