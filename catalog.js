@@ -1,5 +1,5 @@
 window.GOWN_CATALOG = {
-    order: ['ball-gown', 'chubby', 'cocktail', 'filipiniana', 'kids', 'long-gown', 'suit', 'white-gown'],
+    order: ['ball-gown', 'chubby', 'cocktail', 'dresses', 'filipiniana', 'kids', 'long-gown', 'suit', 'white-gown'],
     newArrivalDays: 5,
     newArrivals: {
         'ball-gown': {
@@ -21,6 +21,56 @@ window.GOWN_CATALOG = {
         'chubby': {
         },
         'cocktail': {
+        },
+        'dresses': {
+            'D-0001.jpg' : '2026-08-12',
+            'D-0002.jpg' : '2026-08-12',
+            'D-0003.jpg' : '2026-08-12',
+            'D-0004.jpg' : '2026-08-12',
+            'D-0005.jpg' : '2026-08-12',
+            'D-0006.jpg' : '2026-08-12',
+            'D-0007.jpg' : '2026-08-12',
+            'D-0008.jpg' : '2026-08-12',
+            'D-0009.jpg' : '2026-08-12',
+            'D-0010.jpg' : '2026-08-12',
+            'D-0011.jpg' : '2026-08-12',
+            'D-0012.jpg' : '2026-08-12',
+            'D-0013.jpg' : '2026-08-12',
+            'D-0014.jpg' : '2026-08-12',
+            'D-0015.jpg' : '2026-08-12',
+            'D-0016.jpg' : '2026-08-12',
+            'D-0017.jpg' : '2026-08-12',
+            'D-0018.jpg' : '2026-08-12',
+            'D-0019.jpg' : '2026-08-12',
+            'D-0020.jpg' : '2026-08-12',
+            'D-0021.jpg' : '2026-08-12',
+            'D-0022.jpg' : '2026-08-12',
+            'D-0023.jpg' : '2026-08-12',
+            'D-0024.jpg' : '2026-08-12',
+            'D-0025.jpg' : '2026-08-12',
+            'D-0026.jpg' : '2026-08-12',
+            'D-0027.jpg' : '2026-08-12',
+            'D-0028.jpg' : '2026-08-12',
+            'D-0029.jpg' : '2026-08-12',
+            'D-0030.jpg' : '2026-08-12',
+            'D-0031.jpg' : '2026-08-12',
+            'D-0032.jpg' : '2026-08-12',
+            'D-0033.jpg' : '2026-08-12',
+            'D-0034.jpg' : '2026-08-12',
+            'D-0035.jpg' : '2026-08-12',
+            'D-0036.jpg' : '2026-08-12',
+            'D-0037.jpg' : '2026-08-12',
+            'D-0038.jpg' : '2026-08-12',
+            'D-0039.jpg' : '2026-08-12',
+            'D-0040.jpg' : '2026-08-12',
+            'D-0041.jpg' : '2026-08-12',
+            'D-0042.jpg' : '2026-08-12',
+            'D-0043.jpg' : '2026-08-12',
+            'D-0044.jpg' : '2026-08-12',
+            'D-0045.jpg' : '2026-08-12',
+            'D-0046.jpg' : '2026-08-12',
+            'D-0047.jpg' : '2026-08-12',
+            'D-0048.jpg' : '2026-08-12'
         },
         'filipiniana': {
             'F-0001.jpg' : '2026-08-12',
@@ -70,7 +120,9 @@ window.GOWN_CATALOG = {
         'white-gown': {
         }
     },
-    hiddenItems: {},
+    hiddenItems: {
+
+    },
     categories: {
         'ball-gown': {
             name: 'Ball Gown',
@@ -145,8 +197,20 @@ window.GOWN_CATALOG = {
                 'J-0034.jpg', 'J-0035.jpg', 'J-0036.jpg', 'J-0037.jpg', 'J-0038.jpg', 'J-0039.jpg', 'J-0040.jpg', 'J-0041.jpg',
                 'J-0042.jpg', 'J-0043.jpg', 'J-0044.jpg', 'J-0045.jpg', 'J-0046.jpg', 'J-0047.jpg', 'J-0048.jpg', 'J-0049.jpg',
                 'J-0050.jpg', 'J-0051.jpg', 'J-0052.jpg', 'J-0053.jpg', 'J-0054.jpg', 'J-0055.jpg', 'J-0056.jpg', 'J-0057.jpg',
-                'J-0058.jpg', 'J-0060.jpg', 'J-0061.jpg', 'J-0062.jpg', 'J-0063.jpg', 'J-0064.jpg', 'J-0065.jpg', 'J-0066.jpg',
-                'J-0067.jpg', 'J-0068.jpg', 'J-0069.jpg', 'J-0070.jpg'
+                'J-0058.jpg', 'J-0060.jpg', 'J-0061.jpg', 'J-0062.jpg', 'J-0063.jpg', 'J-0064.jpg'
+            ]
+        },
+        'dresses': {
+            name: 'Dresses',
+            folder: 'Dresses',
+            description: 'Beautiful dresses for every special occasion.',
+            files: [
+                'D-0001.jpg', 'D-0002.jpg', 'D-0003.jpg', 'D-0004.jpg', 'D-0005.jpg', 'D-0006.jpg', 'D-0007.jpg', 'D-0008.jpg',
+                'D-0009.jpg', 'D-0010.jpg', 'D-0011.jpg', 'D-0012.jpg', 'D-0013.jpg', 'D-0014.jpg', 'D-0015.jpg', 'D-0016.jpg',
+                'D-0017.jpg', 'D-0018.jpg', 'D-0019.jpg', 'D-0020.jpg', 'D-0021.jpg', 'D-0022.jpg', 'D-0023.jpg', 'D-0024.jpg',
+                'D-0025.jpg', 'D-0026.jpg', 'D-0027.jpg', 'D-0028.jpg', 'D-0029.jpg', 'D-0030.jpg', 'D-0031.jpg', 'D-0032.jpg',
+                'D-0033.jpg', 'D-0034.jpg', 'D-0035.jpg', 'D-0036.jpg', 'D-0037.jpg', 'D-0038.jpg', 'D-0039.jpg', 'D-0040.jpg',
+                'D-0041.jpg', 'D-0042.jpg', 'D-0043.jpg', 'D-0044.jpg', 'D-0045.jpg', 'D-0046.jpg', 'D-0047.jpg', 'D-0048.jpg'
             ]
         },
         'filipiniana': {
